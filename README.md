@@ -1,4 +1,4 @@
-# LAB - Class 31 Django REST and Docker
+# LAB - Class 32 Permissions and (not postgresql)
 Project: moto_api \
 Author: Benjamin Carter \
 Links and Resources
@@ -28,6 +28,6 @@ How to use your library (where applicable)
 ## Tests 
 `python manage.py test`
 How do you run tests? \
-
+python manage.py test \
 Any tests of note? \
 Describe any tests that you did not complete, skipped, etc

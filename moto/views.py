@@ -1,6 +1,7 @@
 from rest_framework import generics
 from .models import Moto
 from .serializers import MotoSerializer
+from .permissions import IsOwnerOrReadOnly
 
 
 class MotoList(generics.ListCreateAPIView):
@@ -11,3 +12,4 @@ class MotoList(generics.ListCreateAPIView):
 class MotoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Moto.objects.all()
     serializer_class = MotoSerializer
+    permission_classes = (IsOwnerOrReadOnly,)
