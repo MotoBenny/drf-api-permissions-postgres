@@ -23,6 +23,9 @@ class MotoTests(APITestCase):
         )
         test_moto.save()
 
+    def setUp(self):
+        self.client.login(username="testuser1", password="pass")
+
     def test_moto_model(self):
         moto = Moto.objects.get(id=1)
         actual_model = str(moto.model)
@@ -79,3 +82,9 @@ class MotoTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         things = Moto.objects.all()
         self.assertEqual(len(things), 0)
+
+    def test_authentication_required(self):
+        self.client.logout()
+        url = reverse("moto_list")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
